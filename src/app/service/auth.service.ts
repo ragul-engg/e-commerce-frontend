@@ -31,7 +31,11 @@ export class AuthService {
   }
   // this.notify.showError('Error in your username or password', 'E-Commerce');
 
-  isLoggedIn(): boolean {
-    return localStorage.getItem('TOKEN') != null;
+  isLoggedIn() {
+    return this.httpClient.get<boolean>(`${this.baseURL}/validate`, {
+      params: {
+        token: localStorage.getItem('TOKEN') || '',
+      },
+    });
   }
 }
