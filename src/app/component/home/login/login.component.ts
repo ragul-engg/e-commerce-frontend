@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
+import { NotifyService } from 'src/app/service/notify.service';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,11 @@ import { AuthService } from 'src/app/service/auth.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private notify: NotifyService
+  ) {}
 
   loginForm: FormGroup = new FormGroup({
     username: new FormControl(''),
@@ -28,6 +33,7 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('TOKEN', res.token);
       this.authService.isAuthenticated = true;
       this.router.navigate(['products']);
+      this.notify.showSuccess('Welcome!', 'E-Commerce');
     });
   }
 }
