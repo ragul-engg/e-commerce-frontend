@@ -17,4 +17,44 @@
   </div>
 </nav>
 
-<router-outlet></router-outlet>
+<div class="container">
+  <div class="card-group">
+    <div *ngFor="let product of products" class="m-5">
+      <div class="card">
+        <div class="card-body">
+          <img
+            [src]="product.imageUrl"
+            style="
+              min-width: 300px;
+              min-height: 300px;
+              max-width: 300px;
+              max-height: 300px;
+            "
+            class="card-img-top img-thumbnail"
+          />
+          <div class="row my-2">
+            <div class="col">
+              <h5 class="card-title">Name: {{ product.name }}</h5>
+            </div>
+            <div class="col">
+              <h5 class="card-text">
+                Price:
+                {{ product.price }}
+              </h5>
+            </div>
+          </div>
+          <div class="row my-2">
+            <div class="col">
+              <button class="btn btn-secondary" (click)="moreInfo(product.id)">
+                More Info
+              </button>
+            </div>
+            <div class="col">
+              <button class="btn btn-primary">Add to cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

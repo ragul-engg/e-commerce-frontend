@@ -1,18 +1,31 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { JWT } from '../model/JWT';
 import { Login } from '../model/Login';
 import { User } from '../model/User';
 import { catchError, throwError } from 'rxjs';
 import { NotifyService } from './notify.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthService {
-  constructor(private httpClient: HttpClient, private notify: NotifyService) {}
+export class AuthService implements OnInit {
+  constructor(
+    private httpClient: HttpClient,
+    private notify: NotifyService,
+    private router: Router
+  ) {}
 
   baseURL = `http://localhost:8080`;
+
+  isAuthenticated?: boolean;
+
+  ngOnInit(): void {
+    this.isLoggedIn().subscribe((res) => {
+      this.isAuthenticated = res;
+    });
+  }
 
   loginUser(form: Login) {
     return this.httpClient
@@ -37,5 +50,12 @@ export class AuthService {
         token: localStorage.getItem('TOKEN') || '',
       },
     });
+  }
+
+  logOut() {
+    this.notify.showSuccess('Logged out', 'E-Commerce');
+    localStorage.removeItem('TOKEN');
+    this.isAuthenticated = false;
+    this.router.navigate(['home']);
   }
 }

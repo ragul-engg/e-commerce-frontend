@@ -12,6 +12,7 @@ import { ProductComponent } from './component/product/product.component';
 import { ProductDescriptionComponent } from './component/product/product-description/product-description.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NavBarComponent } from './component/nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HomeComponent,
     ProductComponent,
     ProductDescriptionComponent,
+    NavBarComponent,
   ],
   imports: [
     BrowserModule,
