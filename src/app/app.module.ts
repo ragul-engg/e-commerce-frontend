@@ -13,6 +13,7 @@ import { ProductDescriptionComponent } from './component/product/product-descrip
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavBarComponent } from './component/nav-bar/nav-bar.component';
+import { WebcamModule } from 'ngx-webcam';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { NavBarComponent } from './component/nav-bar/nav-bar.component';
       timeOut: 1500,
     }),
     BrowserAnimationsModule,
+    WebcamModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -8,7 +8,9 @@
         placeholder="Search"
         aria-label="Search"
       />
-      <button class="btn btn-primary mx-2"><i class="bi bi-camera"></i></button>
+      <button class="btn btn-primary mx-2" (click)="toggle($event)">
+        <i class="bi bi-camera"></i>
+      </button>
       <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
     <div>
@@ -18,6 +20,21 @@
 </nav>
 
 <div class="container">
+  <div *ngIf="isCameraHidden">
+    <h2>Search from your Camera</h2>
+
+    <div class="col-md-12">
+      <webcam
+        [trigger]="invokeObservable"
+        (imageCapture)="captureImg($event)"
+      ></webcam>
+    </div>
+    <div class="col-md-12">
+      <button class="btn btn-danger" (click)="getSnapshot($event)">
+        Capture Image
+      </button>
+    </div>
+  </div>
   <div class="card-group">
     <div *ngFor="let product of products" class="m-5">
       <div class="card">

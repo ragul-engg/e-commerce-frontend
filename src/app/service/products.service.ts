@@ -25,4 +25,25 @@ export class ProductsService {
       },
     });
   }
+  sendImage(sysImage: string) {
+    const arr = sysImage.split(',');
+    const mime = arr[0].match(/:(.*?);/)![1];
+    const ext = sysImage.split('/')[1].split(';')[0];
+    const bstr = atob(arr[1]);
+    let n = bstr.length;
+    const u8arr = new Uint8Array(n);
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
+    }
+    const file = new File([u8arr], `file.${ext}`);
+
+    const formData = new FormData();
+    formData.append('file', file);
+
+    this.http
+      .post(`http://localhost:5000/upload-image`, formData)
+      .subscribe((res) => {
+        console.log(res);
+      });
+  }
 }
