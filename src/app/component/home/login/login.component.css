@@ -1,0 +1,36 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Adjust as needed */
+    
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 2.5px solid black;
+    padding: 100px;
+    border-radius: 2%;
+    border-style: solid;
+    
+    
+}
+.mb-3{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.form-label{
+    font-size: 20px;
+    font-weight: bold;
+}
+.form-control{
+    padding: 10px;
+    border-radius: 5px;
+    border: 1.5px solid black;
+    width: 150%;
+}
