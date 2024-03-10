@@ -26,7 +26,7 @@ export class ProductComponent implements OnInit {
 
   ngOnInit() {
     this.route.queryParams.subscribe((res) => {
-      if (res) {
+      if (res && res['category']) {
         this.productsService
           .searchCategory(res['category'])
           .subscribe((res) => {
