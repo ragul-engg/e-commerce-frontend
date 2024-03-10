@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from '../model/Product';
+import { SearchPrediction } from '../model/SearchPrediction';
 
 @Injectable({
   providedIn: 'root',
@@ -40,10 +41,20 @@ export class ProductsService {
     const formData = new FormData();
     formData.append('file', file);
 
-    this.http
-      .post(`http://localhost:5000/upload-image`, formData)
-      .subscribe((res) => {
-        console.log(res);
-      });
+    return this.http.post<SearchPrediction[]>(
+      `http://localhost:5000/upload-image`,
+      formData
+    );
+  }
+
+  searchCategory(category: string) {
+    return this.http.get<Product[]>(`${this.baseURL}/api/product/category`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('TOKEN')}`,
+      },
+      params: {
+        category,
+      },
+    });
   }
 }

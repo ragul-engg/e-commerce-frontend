@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { WebcamImage } from 'ngx-webcam';
 import { Observable, Subject, every } from 'rxjs';
 import { Product } from 'src/app/model/Product';
+import { SearchPrediction } from 'src/app/model/SearchPrediction';
 import { AuthService } from 'src/app/service/auth.service';
 import { NotifyService } from 'src/app/service/notify.service';
 import { ProductsService } from 'src/app/service/products.service';
@@ -13,6 +14,7 @@ import { ProductsService } from 'src/app/service/products.service';
   styleUrls: ['./product.component.css'],
 })
 export class ProductComponent implements OnInit {
+  categories?: SearchPrediction[];
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -23,9 +25,18 @@ export class ProductComponent implements OnInit {
   products?: Product[];
 
   ngOnInit() {
-    this.productsService.getAllProducts().subscribe((res) => {
-      this.products = res;
-      console.log(this.products);
+    this.route.queryParams.subscribe((res) => {
+      if (res) {
+        this.productsService
+          .searchCategory(res['category'])
+          .subscribe((res) => {
+            this.products = res;
+          });
+      } else {
+        this.productsService.getAllProducts().subscribe((res) => {
+          this.products = res;
+        });
+      }
     });
   }
 
@@ -58,8 +69,12 @@ export class ProductComponent implements OnInit {
     this.webcamImage = webcamImage;
     this.sysImage = webcamImage!.imageAsDataUrl;
 
-    this.productsService.sendImage(this.sysImage);
-    console.info('got webcam image', this.sysImage);
+    this.productsService.sendImage(this.sysImage).subscribe((res) => {
+      console.log(res);
+
+      this.categories = res;
+      this.categories = this.categories.filter((item) => item.name != 'person');
+    });
   }
 
   public get invokeObservable(): Observable<any> {
@@ -68,5 +83,16 @@ export class ProductComponent implements OnInit {
 
   public get nextWebcamObservable(): Observable<any> {
     return this.nextWebcam.asObservable();
+  }
+  searchCategory(name: string) {
+    this.productsService.searchCategory(name).subscribe((res) => {
+      this.products = res;
+    });
+  }
+
+  resetList() {
+    this.productsService.getAllProducts().subscribe((res) => {
+      this.products = res;
+    });
   }
 }

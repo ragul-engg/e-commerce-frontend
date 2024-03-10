@@ -1,40 +1,6 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid d-flex">
-    <a class="navbar-brand">E-Commerce</a>
-    <form class="d-flex" role="search">
-      <input
-        class="form-control me-2"
-        type="search"
-        placeholder="Search"
-        aria-label="Search"
-      />
-      <button class="btn btn-primary mx-2" (click)="toggle($event)">
-        <i class="bi bi-camera"></i>
-      </button>
-      <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
-    <div>
-      <button class="btn btn-outline-danger" (click)="logout()">Log-out</button>
-    </div>
-  </div>
-</nav>
+<app-nav-bar></app-nav-bar>
 
 <div class="container">
-  <div *ngIf="isCameraHidden">
-    <h2>Search from your Camera</h2>
-
-    <div class="col-md-12">
-      <webcam
-        [trigger]="invokeObservable"
-        (imageCapture)="captureImg($event)"
-      ></webcam>
-    </div>
-    <div class="col-md-12">
-      <button class="btn btn-danger" (click)="getSnapshot($event)">
-        Capture Image
-      </button>
-    </div>
-  </div>
   <div class="card-group">
     <div *ngFor="let product of products" class="m-5">
       <div class="card">

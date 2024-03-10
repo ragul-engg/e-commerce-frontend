@@ -14,6 +14,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavBarComponent } from './component/nav-bar/nav-bar.component';
 import { WebcamModule } from 'ngx-webcam';
+import { SearchResultComponent } from './component/search-result/search-result.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { WebcamModule } from 'ngx-webcam';
     ProductComponent,
     ProductDescriptionComponent,
     NavBarComponent,
+    SearchResultComponent,
   ],
   imports: [
     BrowserModule,
