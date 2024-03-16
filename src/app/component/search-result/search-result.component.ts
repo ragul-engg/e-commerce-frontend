@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { WebcamImage } from 'ngx-webcam';
 import { Observable, Subject } from 'rxjs';
@@ -10,11 +10,18 @@ import { ProductsService } from 'src/app/service/products.service';
   templateUrl: './search-result.component.html',
   styleUrls: ['./search-result.component.css'],
 })
+@Injectable({
+  providedIn: 'root',
+})
 export class SearchResultComponent {
   constructor(
     private productsService: ProductsService,
     private router: Router
   ) {}
+  isavailable:boolean=true;
+
+
+  
 
   private trigger: Subject<any> = new Subject();
 

@@ -1,0 +1,94 @@
+<!-- <div class="row  d-flex  justify-content-center align-items-center   border border-2 border-black ">
+  <form class="d-flex align-items-center justify-content-center flex-column  " [formGroup]="newProduct">
+    <div class="mb-3 d-flex align-items-center justify-content-center flex-column ">
+      <label for="name" class="form-label fw-bold">Name</label>
+      <input type="text" class="form-control" id="name" formControlName="name" placeholder="Enter product name" />
+    </div>
+    <div class="mb-3 d-flex align-items-center justify-content-center flex-column ">
+      <label for="price" class="form-label fw-bold">Price</label>
+      <input type="number" class="form-control" id="price" formControlName="price" placeholder="Enter price" />
+    </div>
+    <div class="mb-3 d-flex align-items-center justify-content-center flex-column ">
+      <label for="colour" class="form-label fw-bold">colour</label>
+      <input type="text" class="form-control" id="colour" placeholder="Enter  product colour"
+        formControlName="colour" />
+    </div>
+
+    <div class="mb-3 d-flex align-items-center justify-content-center flex-column ">
+      <label for="description" class="form-label fw-bold">description</label>
+      <input type="text" class="form-control" id="description" placeholder="Enter description"
+        formControlName="description" />
+    </div>
+    <div class="mb-3 d-flex align-items-center justify-content-center flex-column ">
+      <label for="quantity" class="form-label fw-bold">quantity</label>
+      <input type="number" class="form-control" id="quantity" placeholder="Enter quantity" formControlName="quantity" />
+    </div>
+    <div class="mb-3 d-flex align-items-center justify-content-center flex-column ">
+      <label for="category" class="input-group-text fw-bold">category</label>
+      <select class="form-select" id="category" formControlName="category">
+        <option selected>Choose Category</option>
+        <option value="1">Cell Phone</option>
+        <option value="2">Water Bottle</option>
+        <option value="3">Laptop</option>
+      </select>
+    </div>
+
+    <div class="mb-3 d-flex align-items-center justify-content-center flex-column ">
+      <label for="imageUrl" class="form-label fw-bold">ImageUrl</label>
+      <input type="text" class="form-control" id="imageUrl" formControlName="imageUrl" placeholder="Enter imageUrl" />
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="handleAddProduct(newProduct)">Add Product</button>
+  </form>
+</div> -->
+
+<div class="container-fluid border border-4  border-black   p-xl-3  ">
+    <form [formGroup]="newProduct">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="mb-3 d-flex align-items-center justify-content-center flex-column ">
+            <label for="name" class="form-label fw-bold">Name</label>
+            <input type="text" class="form-control" id="name" formControlName="name" placeholder="Enter product name" />
+          </div>
+          <div class="mb-3 d-flex align-items-center justify-content-center flex-column ">
+            <label for="price" class="form-label fw-bold">Price</label>
+            <input type="number" class="form-control" id="price" formControlName="price" placeholder="Enter price" />
+          </div>
+          <div class="mb-3 d-flex align-items-center justify-content-center flex-column ">
+            <label for="colour" class="form-label fw-bold">Colour</label>
+            <input type="text" class="form-control" id="colour" placeholder="Enter  product colour"
+              formControlName="colour" />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="mb-3 d-flex align-items-center justify-content-center flex-column ">
+            <label for="quantity" class="form-label fw-bold">Quantity</label>
+            <input type="number" class="form-control" id="quantity" placeholder="Enter quantity"
+              formControlName="quantity" />
+          </div>
+          <div class="mb-3 d-flex align-items-center justify-content-center flex-column ">
+            <label for="category" class="form-label  fw-bold">Category</label>
+            <select class="form-select" id="category" formControlName="category">
+              <option value="1">Cell Phone</option>
+              <option value="2">Water Bottle</option>
+              <option value="3">Laptop</option>
+            </select>
+          </div>
+          <div class="mb-3 d-flex align-items-center justify-content-center flex-column ">
+            <label for="imageUrl" class="form-label fw-bold">ImageUrl</label>
+            <input type="text" class="form-control" id="imageUrl" placeholder="add Image Url"
+              formControlName="imageUrl" />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="mb-3 d-flex align-items-center justify-content-center flex-column ">
+          <label for="description" class="form-label fw-bold">Description</label>
+          <textarea  class="form-control" id="description" placeholder="Enter description"
+            formControlName="description"></textarea>
+        </div>
+      </div>
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary" (click)="handleAddProduct(newProduct)">Submit</button>
+      </div>
+    </form>
+  </div>

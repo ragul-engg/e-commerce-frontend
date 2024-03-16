@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from '../model/Product';
 import { SearchPrediction } from '../model/SearchPrediction';
+import { FormGroup } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -56,5 +58,28 @@ export class ProductsService {
         category,
       },
     });
+  }
+
+  addProduct(newProduct: Object):Observable<Product> {
+    console.log(newProduct);
+
+    return this.http.post<Product>(
+      `${this.baseURL}/api/product/new`,
+      newProduct,
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('TOKEN')}`,
+        },
+      }
+    );
+  }
+
+  deleteProduct(id:number):Observable<Product>{
+    console.log(id)
+      return this.http.delete<Product>(`${this.baseURL}/api/product/${id}`,{
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('TOKEN')}`,
+        },
+      })
   }
 }
