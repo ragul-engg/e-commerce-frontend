@@ -7,6 +7,9 @@ import { ProductComponent } from './component/product/product.component';
 import { authGuard } from './guard/auth.guard';
 import { ProductDescriptionComponent } from './component/product/product-description/product-description.component';
 import { SearchResultComponent } from './component/search-result/search-result.component';
+import { AdminComponent } from './component/admin/admin.component';
+import { AddProductComponent } from './component/product/add-product/add-product.component';
+import { DeleteProductComponent } from './component/product/delete-product/delete-product.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -32,6 +35,15 @@ const routes: Routes = [
     path: 'products/:productId',
     component: ProductDescriptionComponent,
     canActivate: [authGuard()],
+  },
+  {
+    path: 'admin',
+    component: AdminComponent,
+    canActivate: [authGuard()],
+    children: [
+      { path: 'product/new', component: AddProductComponent },
+      { path: 'product/delete', component: DeleteProductComponent },
+    ],
   },
   { path: '**', redirectTo: 'home' },
 ];
