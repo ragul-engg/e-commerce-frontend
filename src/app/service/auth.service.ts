@@ -20,6 +20,7 @@ export class AuthService implements OnInit {
   baseURL = `http://localhost:8080`;
 
   isAuthenticated?: boolean;
+  isAdmin?: boolean;
 
   ngOnInit(): void {
     this.isLoggedIn().subscribe((res) => {

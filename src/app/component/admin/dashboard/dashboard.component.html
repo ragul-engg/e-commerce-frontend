@@ -1,0 +1,134 @@
+<div
+  class="container d-flex justify-content-center align-items-center flex-column mt-lg-2"
+>
+  <!-- sidebar  -->
+  <div
+    class="offcanvas offcanvas-start"
+    tabindex="-1"
+    id="offcanvasExample"
+    aria-labelledby="offcanvasExampleLabel"
+  >
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Admin Tools</h5>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"
+      ></button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="container border border-1">
+        Some text as placeholder. In real life you can have the elements you
+        have chosen. Like, text, images, lists, etc.
+      </div>
+      <div class="container-fluid d-flex border border-1 mt-2">
+        <div
+          class="accordion accordion-flush w-100 m-2"
+          id="accordionFlushExample"
+        >
+          <div class="accordion-item">
+            <h2 class="accordion-header mt-2">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseOne"
+                aria-expanded="false"
+                aria-controls="flush-collapseOne"
+              >
+                <h6 class="fw-bold">PRODUCTS</h6>
+              </button>
+            </h2>
+            <div>
+              <div
+                id="flush-collapseOne"
+                class="accordion-collapse collapse"
+                data-bs-parent="#accordionFlushExample"
+              >
+                <div class="accordion-body d-flex">
+                  <div
+                    class="container d-flex justify-content-center align-items-center flex-column gap-2"
+                  >
+                    <button
+                      class="btn w-75 btn-primary"
+                      (click)="toggleProduct('new')"
+                    >
+                      Add Product
+                    </button>
+                    <button
+                      class="btn w-75 btn-primary"
+                      (click)="toggleProduct('delete')"
+                    >
+                      Delete Product
+                    </button>
+                    <button class="btn w-75 btn-primary">Update Product</button>
+                    <button class="btn w-75 btn-primary">
+                      Get All Products
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header mt-2">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseTwo"
+                aria-expanded="false"
+                aria-controls="flush-collapseTwo"
+              >
+                <h6 class="fw-bold">CUSTOMERS</h6>
+              </button>
+            </h2>
+            <div
+              id="flush-collapseTwo"
+              class="accordion-collapse collapse"
+              data-bs-parent="#accordionFlushExample"
+            >
+              <div class="accordion-body">delete pandra</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header mt-2">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseThree"
+                aria-expanded="false"
+                aria-controls="flush-collapseThree"
+              >
+                <h6 class="fw-bold">ORDERS</h6>
+              </button>
+            </h2>
+            <div
+              id="flush-collapseThree"
+              class="accordion-collapse collapse"
+              data-bs-parent="#accordionFlushExample"
+            >
+              <div class="accordion-body"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- sidebar toggle button -->
+  <button
+    class="btn btn-primary mb-2"
+    type="button"
+    data-bs-toggle="offcanvas"
+    data-bs-target="#offcanvasExample"
+    aria-controls="offcanvasExample"
+  >
+    Open Tools
+  </button>
+  <div>
+    <app-add-product *ngIf="activeProduct=='new'"></app-add-product>
+    <app-delete-product *ngIf="activeProduct == 'delete'"></app-delete-product>
+  </div>
+</div>

@@ -23,17 +23,34 @@ export class LoginComponent implements OnInit {
   });
 
   ngOnInit() {
-    if (this.authService.isAuthenticated) {
-      this.router.navigate(['products']);
-    }
+    this.authService.isLoggedIn().subscribe((res) => {
+      this.authService.isAuthenticated = res;
+      console.log(this.authService.isAdmin);
+      
+      if (this.authService.isAuthenticated && this.authService.isAdmin) {
+        this.router.navigate(['admin/dashboard']);
+      } else if (this.authService.isAuthenticated) {
+        this.router.navigate(['products']);
+      }
+    });
   }
 
   loginUser(form: FormGroup) {
     this.authService.loginUser(form.value).subscribe((res) => {
       localStorage.setItem('TOKEN', res.token);
-      this.authService.isAuthenticated = true;
-      this.router.navigate(['products']);
-      this.notify.showSuccess('Welcome!', 'E-Commerce');
+      this.authService.isAuthenticated = res.token ? true : false;
+      console.log(res.role);
+
+      if (this.authService.isAuthenticated && res.role == 'ADMIN') {
+        this.authService.isAdmin = true;
+        this.router.navigate(['admin/dashboard']);
+        this.notify.showSuccess(`Welcome ${form.value['username']}!`, 'E-Commerce');
+      } else if (this.authService.isAuthenticated && res.role == 'USER') {
+        this.router.navigate(['products']);
+        this.notify.showSuccess(`Welcome ${form.value['username']}!`, 'E-Commerce');
+      }else{
+        this.notify.showError('Error in your username or password', 'E-Commerce');
+      }
     });
   }
 }

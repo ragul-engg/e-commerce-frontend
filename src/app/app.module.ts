@@ -18,6 +18,7 @@ import { SearchResultComponent } from './component/search-result/search-result.c
 import { AdminComponent } from './component/admin/admin.component';
 import { AddProductComponent } from './component/product/add-product/add-product.component';
 import { DeleteProductComponent } from './component/product/delete-product/delete-product.component';
+import { DashboardComponent } from './component/admin/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { DeleteProductComponent } from './component/product/delete-product/delet
     AdminComponent,
     DeleteProductComponent,
     AddProductComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +45,7 @@ import { DeleteProductComponent } from './component/product/delete-product/delet
     }),
     BrowserAnimationsModule,
     WebcamModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
