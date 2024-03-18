@@ -12,12 +12,12 @@ export function authGuard(): CanActivateFn {
     inject(AuthService)
       .isLoggedIn()
       .subscribe((res) => {
-        if (!res) {
+        if (!res.valid) {
           router.navigate(['home']);
         }
-        subject.next(res);
+        subject.next(res.valid);
       });
-
+    console.log(subject.asObservable());
     return subject.asObservable();
   };
 }

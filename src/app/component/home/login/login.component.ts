@@ -24,9 +24,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.authService.isLoggedIn().subscribe((res) => {
-      this.authService.isAuthenticated = res;
-      console.log(this.authService.isAdmin);
-      
+      this.authService.isAuthenticated = res.valid;
+      this.authService.isAdmin = res.role == 'ADMIN' ? true : false;
       if (this.authService.isAuthenticated && this.authService.isAdmin) {
         this.router.navigate(['admin/dashboard']);
       } else if (this.authService.isAuthenticated) {
@@ -40,16 +39,28 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('TOKEN', res.token);
       this.authService.isAuthenticated = res.token ? true : false;
       console.log(res.role);
+      console.log(this.authService.isAuthenticated);
 
       if (this.authService.isAuthenticated && res.role == 'ADMIN') {
         this.authService.isAdmin = true;
         this.router.navigate(['admin/dashboard']);
-        this.notify.showSuccess(`Welcome ${form.value['username']}!`, 'E-Commerce');
+        this.notify.showSuccess(
+          `Welcome ${form.value['username']}!`,
+          'E-Commerce'
+        );
       } else if (this.authService.isAuthenticated && res.role == 'USER') {
+        console.log('came here');
+
         this.router.navigate(['products']);
-        this.notify.showSuccess(`Welcome ${form.value['username']}!`, 'E-Commerce');
-      }else{
-        this.notify.showError('Error in your username or password', 'E-Commerce');
+        this.notify.showSuccess(
+          `Welcome ${form.value['username']}!`,
+          'E-Commerce'
+        );
+      } else {
+        this.notify.showError(
+          'Error in your username or password',
+          'E-Commerce'
+        );
       }
     });
   }
