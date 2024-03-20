@@ -7,7 +7,6 @@ import { SearchPrediction } from 'src/app/model/SearchPrediction';
 import { AuthService } from 'src/app/service/auth.service';
 import { NotifyService } from 'src/app/service/notify.service';
 import { ProductsService } from 'src/app/service/products.service';
-
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
