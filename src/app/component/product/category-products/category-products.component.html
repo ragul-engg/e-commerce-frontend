@@ -1,6 +1,6 @@
 <app-nav-bar></app-nav-bar>
 
-<div class="container-fluid">
+<div class="container-fluid" *ngIf="!isProductDescription">
   <div class="row m-2 h-100">
     <div *ngFor="let product of products" class="col-md-3">
       <div class="card border border-black h-100">
@@ -32,3 +32,4 @@
     </div>
   </div>
 </div>
+<router-outlet></router-outlet>

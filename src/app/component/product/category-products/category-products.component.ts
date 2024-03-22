@@ -18,13 +18,18 @@ export class CategoryProductsComponent implements OnInit {
     private authService: AuthService,
     private productsService: ProductsService
   ) {
+    
       console.log("am inside category!")
     if (this.authService != null) console.log('Auth service not null');
-    console.log(this.authService.isAdmin);
+    window.onpopstate=()=>{
+      this.isProductDescription=false;
+    }
+    
   }
   products?: Product[];
-
+  isProductDescription:boolean=false;
   categories?: SearchPrediction[];
+  
 
   ngOnInit() {
     this.route.queryParams.subscribe((res) => {
@@ -40,12 +45,18 @@ export class CategoryProductsComponent implements OnInit {
         });
       }
     });
+    
+    
+    
   }
 
   
 
   moreInfo(productId: number) {
     this.router.navigate([productId], { relativeTo: this.route });
+    this.isProductDescription=true;
+    console.log("im here");
+    
   }
 
   logout() {

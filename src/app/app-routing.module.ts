@@ -12,6 +12,9 @@ import { AddProductComponent } from './component/product/add-product/add-product
 import { DeleteProductComponent } from './component/product/delete-product/delete-product.component';
 import { DashboardComponent } from './component/admin/dashboard/dashboard.component';
 import { CategoryProductsComponent } from './component/product/category-products/category-products.component';
+import { UserComponent } from './component/user/user.component';
+import { CartComponent } from './component/user/cart/cart.component';
+import { ProfileComponent } from './component/user/profile/profile.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -34,15 +37,11 @@ const routes: Routes = [
     path: 'products/category',
     component: CategoryProductsComponent,
     canActivate: [authGuard()],
+    children: [{ path: ':productId', component: ProductDescriptionComponent }]
   },
   {
     path: 'search',
     component: SearchResultComponent,
-    canActivate: [authGuard()],
-  },
-  {
-    path: 'products/:productId',
-    component: ProductDescriptionComponent,
     canActivate: [authGuard()],
   },
   {
@@ -59,6 +58,16 @@ const routes: Routes = [
           { path: 'product/delete', component: DeleteProductComponent },
         ],
       },
+    ],
+  },
+  {
+    path: 'user',
+    component: UserComponent,
+    canActivate: [authGuard()],
+    canActivateChild: [authGuard()],
+    children: [
+      { path: 'cart', component: CartComponent },
+      { path: 'profile', component: ProfileComponent },
     ],
   },
   { path: '**', redirectTo: 'home' },

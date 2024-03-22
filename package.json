@@ -22,6 +22,7 @@
     "bootstrap-icons": "^1.11.3",
     "ngx-toastr": "^18.0.0",
     "ngx-webcam": "^0.4.1",
+    "primeicons": "^6.0.1",
     "primeng": "^16.9.6-lts",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

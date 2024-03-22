@@ -31,4 +31,11 @@ export class NavBarComponent {
       this.router.navigate(['products']);
     }
   }
+
+  handleCartToggle(){
+    this.router.navigateByUrl('user/cart');
+  }
+  handleProfileToggle(){
+    this.router.navigateByUrl('user/profile');
+  }
 }

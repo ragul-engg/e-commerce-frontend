@@ -20,6 +20,9 @@ import { AddProductComponent } from './component/product/add-product/add-product
 import { DeleteProductComponent } from './component/product/delete-product/delete-product.component';
 import { DashboardComponent } from './component/admin/dashboard/dashboard.component';
 import { CategoryProductsComponent } from './component/product/category-products/category-products.component';
+import { UserComponent } from './component/user/user.component';
+import { CartComponent } from './component/user/cart/cart.component';
+import { ProfileComponent } from './component/user/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +39,9 @@ import { CategoryProductsComponent } from './component/product/category-products
     AddProductComponent,
     DashboardComponent,
     CategoryProductsComponent,
+    UserComponent,
+    CartComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

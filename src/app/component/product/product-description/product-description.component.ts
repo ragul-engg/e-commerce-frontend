@@ -14,7 +14,10 @@ export class ProductDescriptionComponent implements OnInit {
   constructor(
     private productsService: ProductsService,
     private route: ActivatedRoute
-  ) {}
+  ) {
+    console.log("im on description page");
+    
+  }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((res) => {
