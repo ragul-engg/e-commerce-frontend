@@ -19,7 +19,10 @@ export class ProductComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     private productsService: ProductsService
-  ) {}
+  ) {
+    if (this.authService != null) console.log('Auth service not null');
+    console.log(this.authService.isAdmin);
+  }
 
   products?: Product[];
 
@@ -83,9 +86,16 @@ export class ProductComponent implements OnInit {
   public get nextWebcamObservable(): Observable<any> {
     return this.nextWebcam.asObservable();
   }
-  searchCategory(name: string) {
-    this.productsService.searchCategory(name).subscribe((res) => {
-      this.products = res;
+  // searchCategory(name: string) {
+  //   this.productsService.searchCategory(name).subscribe((res) => {
+  //     this.products = res;
+  //   });
+  // }
+  searchCategory(category: string) {
+    this.router.navigate(['products/category'], {
+      queryParams: {
+        category,
+      },
     });
   }
 

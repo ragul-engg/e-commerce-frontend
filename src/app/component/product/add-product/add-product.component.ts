@@ -35,7 +35,6 @@ export class AddProductComponent {
 
   handleAddProduct(form: FormGroup): void {
     console.log(form.value);
-    
     this.productService.addProduct(form.value).subscribe({
       next:(res)=>{
         console.log(res);

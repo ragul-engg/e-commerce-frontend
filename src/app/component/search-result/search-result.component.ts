@@ -56,7 +56,7 @@ export class SearchResultComponent {
     this.trigger.next(void 0);
   }
   searchCategory(category: string) {
-    this.router.navigate(['products'], {
+    this.router.navigate(['products/category'], {
       queryParams: {
         category,
       },

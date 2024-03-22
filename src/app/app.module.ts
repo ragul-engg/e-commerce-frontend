@@ -19,6 +19,7 @@ import { AdminComponent } from './component/admin/admin.component';
 import { AddProductComponent } from './component/product/add-product/add-product.component';
 import { DeleteProductComponent } from './component/product/delete-product/delete-product.component';
 import { DashboardComponent } from './component/admin/dashboard/dashboard.component';
+import { CategoryProductsComponent } from './component/product/category-products/category-products.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { DashboardComponent } from './component/admin/dashboard/dashboard.compon
     DeleteProductComponent,
     AddProductComponent,
     DashboardComponent,
+    CategoryProductsComponent,
   ],
   imports: [
     BrowserModule,

@@ -11,6 +11,7 @@ import { AdminComponent } from './component/admin/admin.component';
 import { AddProductComponent } from './component/product/add-product/add-product.component';
 import { DeleteProductComponent } from './component/product/delete-product/delete-product.component';
 import { DashboardComponent } from './component/admin/dashboard/dashboard.component';
+import { CategoryProductsComponent } from './component/product/category-products/category-products.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -25,6 +26,13 @@ const routes: Routes = [
   {
     path: 'products',
     component: ProductComponent,
+    canActivate: [authGuard()],
+    // canActivateChild: [authGuard()],
+    // children: [{ path: 'category', component: CategoryProductsComponent }],
+  },
+  {
+    path: 'products/category',
+    component: CategoryProductsComponent,
     canActivate: [authGuard()],
   },
   {

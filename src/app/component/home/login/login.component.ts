@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
   loginUser(form: FormGroup) {
     this.authService.loginUser(form.value).subscribe((res) => {
       localStorage.setItem('TOKEN', res.token);
+      sessionStorage.setItem('isAuthenticated',res.token)
       this.authService.isAuthenticated = res.token ? true : false;
       console.log(res.role);
       console.log(this.authService.isAuthenticated);
