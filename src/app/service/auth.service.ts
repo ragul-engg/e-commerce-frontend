@@ -20,10 +20,11 @@ export class AuthService implements OnInit {
   baseURL = `http://localhost:8080`;
 
   isAuthenticated?: boolean;
+  isAdmin?: boolean;
 
   ngOnInit(): void {
     this.isLoggedIn().subscribe((res) => {
-      this.isAuthenticated = res;
+      this.isAuthenticated = res.valid;
     });
   }
 
@@ -45,16 +46,7 @@ export class AuthService implements OnInit {
   // this.notify.showError('Error in your username or password', 'E-Commerce');
 
   isLoggedIn() {
-    this.httpClient
-      .get<boolean>(`${this.baseURL}/validate`, {
-        params: {
-          token: localStorage.getItem('TOKEN') || '',
-        },
-      })
-      .subscribe((res) => {
-        this.isAuthenticated = res;
-      });
-    return this.httpClient.get<boolean>(`${this.baseURL}/validate`, {
+    return this.httpClient.get<JWT>(`${this.baseURL}/validate`, {
       params: {
         token: localStorage.getItem('TOKEN') || '',
       },
@@ -65,6 +57,7 @@ export class AuthService implements OnInit {
     this.notify.showSuccess('Logged out', 'E-Commerce');
     localStorage.removeItem('TOKEN');
     this.isAuthenticated = false;
+    this.isAdmin = false;
     this.router.navigate(['home']);
   }
 }

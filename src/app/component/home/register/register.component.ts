@@ -22,7 +22,7 @@ export class RegisterComponent {
     email: new FormControl(''),
     mobileNo: new FormControl(null),
     password: new FormControl(''),
-    role: new FormControl('USER'),
+    role: new FormControl(''),
     username: new FormControl(''),
   });
 
