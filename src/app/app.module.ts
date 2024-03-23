@@ -24,6 +24,7 @@ import { UserComponent } from './component/user/user.component';
 import { CartComponent } from './component/user/cart/cart.component';
 import { ProfileComponent } from './component/user/profile/profile.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +54,8 @@ import { ProfileComponent } from './component/user/profile/profile.component';
     }),
     BrowserAnimationsModule,
     WebcamModule,
-    FormsModule,
+    FormsModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent],

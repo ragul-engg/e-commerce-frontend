@@ -1,5 +1,5 @@
 <app-nav-bar></app-nav-bar>
-
+<!-- category component showing cars -->
 <div class="container-fluid" *ngIf="!isProductDescription">
   <div class="row m-2 h-100">
     <div *ngFor="let product of products" class="col-md-3">
@@ -24,7 +24,7 @@
               <button class="btn btn-secondary" (click)="moreInfo(product.id)">
                 More Info
               </button>
-              <button class="btn btn-primary">Add to cart</button>
+              <button class="btn btn-primary" (click)="handleAddToCart(product.id)">Add to cart</button>
             </div>
           </div>
         </div>
@@ -32,4 +32,5 @@
     </div>
   </div>
 </div>
+
 <router-outlet></router-outlet>
