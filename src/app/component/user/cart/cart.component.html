@@ -1,8 +1,88 @@
-<div>customerId:{{cartData?.customerId}} <br> cartItems:{{cartData?.cartItems}} <br> totalItems:{{cartData?.totalItems}} <br> totalPrice: {{cartData?.totalPrice}} <br>cartId: {{cartData?.id}}</div>
 
 
 
 
 
 
+<div class="container-fluid d-flex vh-100 mt-2  flex-column  ">
+    <div class="row"><div class="col d-flex justify-content-center bg-body-tertiary  shadow-sm rounded "><h2 class="fw-bolder ">CART</h2></div></div>
+    <div class="container mt-5   ">
+    <div class="row shadow-sm rounded  p-2">
+        <div class="col-8    rounded  ">
+            <table class="table border border-1 p-1  d-flex justify-content-center w-100  flex-column rounded">
 
+                <thead class="container d-flex flex-column  justify-content-center  w-100  my-1  rounded-1 ">
+                  <div class="row  ">
+                    <div class="col-1 bg-body-tertiary    text-center fw-bold font-monospace  ">Item.No</div>
+                    <div class="col-7 bg-body-tertiary  text-center fw-bold font-monospace  ">Product</div>
+                    <div class="col-2  bg-body-tertiary  text-center fw-bold font-monospace ">Quantity</div>
+                    <div class="col-2 bg-body-tertiary   text-center fw-bold  font-monospace ">Price</div>
+                </div>
+                </thead>
+                <tbody class="ItemContainer   rounded-1 w-100 " >
+                    <div  class="Container px-3 me-1  "   *ngFor="let data of cartItemDetails" >
+                        <div class="row shadow-sm my-2  bg-body-tertiary rounded d-flex justify-content-center align-items-center">
+                            <div class="col-1   text-center fw-bold rounded ">{{data.cartItemId}}</div>
+                            <div class="col-7   text-center fw-bold rounded ">
+                                <div class="row">
+                                    <div class="col-6  ">
+                                        <img class="img-fluid rounded-3 " src="{{data.product?.imageUrl}}" alt="">
+                                    </div>
+                                    <div class="col-6  ">
+                                        <div class="card"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-2  d-flex justify-content-end   text-center fw-bold  rounded">
+                                
+                                
+                                <input class="w-50 " type=number value="{{data.quantity}}">
+                                
+                                
+                                
+                            </div>
+                            <div class="col-2   text-center fw-bold rounded ">{{data.totalPrice}}</div>
+                        </div>
+                    </div>
+                </tbody>
+                <div class="my-2 p-2 me-2 shadow-sm rounded ">
+                    <div class=" mb-4 mb-lg-0">
+                        <div class="card-body">
+                          <p><strong>We accept</strong></p>
+                          <img class="me-2" width="45px"
+                            src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/visa.svg"
+                            alt="Visa" />
+                          <img class="me-2" width="45px"
+                            src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/amex.svg"
+                            alt="American Express" />
+                          <img class="me-2" width="45px"
+                            src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/mastercard.svg"
+                            alt="Mastercard" />
+                        </div>
+                    </div>
+                </div>
+            </table>
+        </div>
+        <div class="col-3  rounded ms-auto me-2 my-auto ">
+              <div class="card  shadow-sm rounded" >
+                <img src="assets/site_images/product_page/card_sedan.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title ">
+                    <span class=" col-6">CHECKOUT😺</span>
+                  </h5>
+                  <p class="card-text ">
+                    <span class=" col-7">
+
+                    </span>
+                    <span class=" col-4"></span>
+                    <span class=" col-4"></span>
+                    <span class=" col-6"></span>
+                    <span class=" col-8"></span>
+                  </p>
+                  <a class="btn btn-primary disabled placeholder col-6" aria-disabled="true"></a>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
+</div>

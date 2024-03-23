@@ -7,6 +7,11 @@ import { CartService } from 'src/app/service/cart/cart.service';
 import { of } from 'rxjs';
 import { UserService } from 'src/app/service/user/user.service';
 import { NotifyService } from 'src/app/service/notify.service';
+import { CartItem } from 'src/app/model/CartItem';
+import { CartItemDetails } from 'src/app/model/CartItemDetails';
+import { ProductsService } from 'src/app/service/products.service';
+import { Product } from 'src/app/model/Product';
+
 
 
 @Component({
@@ -20,27 +25,58 @@ export class CartComponent {
     private authservice: AuthService,
     private cartService: CartService,
     private userService: UserService,
-    private notify: NotifyService
+    private notify: NotifyService,
+    private productService:ProductsService
   ) {}
   // cart data holder
   cartData?: Cart;
+  cartItems:CartItem[]=[];
+  cartItemDetails:CartItemDetails[]=[];
   customerId: number = 0;
   ngOnInit(): void {
-    const data = new Subject<Cart>();
     this.userService.getUserProfile().subscribe({
       next: (res) => {
         this.customerId = res.customerId;
         this.cartService.getCartData(this.customerId).subscribe({
           next: (res) => {
             console.log(res);
-
             this.cartData = res;
-            data.next(this.cartData);
-            data.complete;
+            this.cartItems=res.cartItems;
+            //get product details and add to cartItemDetails
+            this.cartItems.map((data,_value)=>{
+              console.log("here");
+              this.productService.getProduct(data.productId).subscribe({
+                next:(res)=>{
+                  console.log("came in");
+                  console.log(res);
+                  let cartDetail: CartItemDetails = {
+                    product: res,
+                    cartItemId: _value+1,
+                    quantity: data.quantity,
+                    totalPrice: data.totalPrice
+                  };
+                  this.cartItemDetails?.push(cartDetail);
+                },
+                error:(err)=>{
+                  console.log(err);
+                  this.notify.showError('Cannot Load Products in CartItems', 'E-Commerce');
+                  
+                }
+              })
+              
+            })
+            this.cartItemDetails = this.cartItemDetails.sort((a, b) => {
+              if (a.cartItemId && b.cartItemId) {
+                return a.cartItemId - b.cartItemId;
+              }
+              return 0;
+            });
+
+            console.log(Cart);
+            
           },
           error: (err) => {
-            data.next(err);
-            data.complete;
+            
             this.notify.showError('Cannot get Cart', 'E-Commerce');
           },
         });

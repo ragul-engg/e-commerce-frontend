@@ -23,7 +23,9 @@ import { CategoryProductsComponent } from './component/product/category-products
 import { UserComponent } from './component/user/user.component';
 import { CartComponent } from './component/user/cart/cart.component';
 import { ProfileComponent } from './component/user/profile/profile.component';
-
+import { ScrollPanelModule } from 'primeng/scrollpanel';
+import { DataViewModule } from 'primeng/dataview';
+import { DividerModule } from 'primeng/divider';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,7 @@ import { ProfileComponent } from './component/user/profile/profile.component';
     UserComponent,
     CartComponent,
     ProfileComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -54,8 +57,10 @@ import { ProfileComponent } from './component/user/profile/profile.component';
     }),
     BrowserAnimationsModule,
     WebcamModule,
-    FormsModule
-    
+    FormsModule,
+    ScrollPanelModule,
+    DataViewModule,
+    DividerModule
   ],
   providers: [],
   bootstrap: [AppComponent],
