@@ -1,4 +1,17 @@
-.ItemContainer{
+.ItemContainer {
     height: 500px;
     overflow-y: auto;
+}
+
+.category {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-decoration: underline;
+}
+
+.cartText {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+}
+
+.franklin{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }

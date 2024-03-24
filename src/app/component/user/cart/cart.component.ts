@@ -51,7 +51,8 @@ export class CartComponent {
                   console.log(res);
                   let cartDetail: CartItemDetails = {
                     product: res,
-                    cartItemId: _value+1,
+                    index: _value+1,
+                    cartItemId:data.id,
                     quantity: data.quantity,
                     totalPrice: data.totalPrice
                   };
@@ -85,5 +86,30 @@ export class CartComponent {
         this.notify.showError('Cannot Load Customer Profile', 'E-Commerce');
       },
     });
+  }
+  removeCartItem(cartItemId:number){
+    this.cartService.removeCartItem(cartItemId).subscribe({
+      next:(res)=>{
+        this.notify.showSuccess(res,"E-Commerce");
+        console.log(res);
+        this.cartItemDetails=this.cartItemDetails.filter((data)=>{data.cartItemId!=cartItemId});
+        this.ngOnInit()
+      },
+      error:(err)=>{
+        console.log("errer here");
+        console.log(err);
+        
+        
+        this.notify.showError("Error removing CartItem","E-Commerce");
+        
+      }
+    })
+
+
+  }
+
+
+  handleCheckout(){
+   this.router.navigate(['user/order'],); 
   }
 }

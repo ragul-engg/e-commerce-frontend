@@ -26,6 +26,7 @@ import { ProfileComponent } from './component/user/profile/profile.component';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { DataViewModule } from 'primeng/dataview';
 import { DividerModule } from 'primeng/divider';
+import { OrderComponent } from './component/user/order/order.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { DividerModule } from 'primeng/divider';
     UserComponent,
     CartComponent,
     ProfileComponent,
+    OrderComponent,
     
   ],
   imports: [

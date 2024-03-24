@@ -15,6 +15,7 @@ import { CategoryProductsComponent } from './component/product/category-products
 import { UserComponent } from './component/user/user.component';
 import { CartComponent } from './component/user/cart/cart.component';
 import { ProfileComponent } from './component/user/profile/profile.component';
+import { OrderComponent } from './component/user/order/order.component';
 
 
 const routes: Routes = [
@@ -69,6 +70,7 @@ const routes: Routes = [
     children: [
       { path: 'cart', component: CartComponent },
       { path: 'profile', component: ProfileComponent },
+      { path: 'order', component: OrderComponent },
     ],
   },
   { path: '**', redirectTo: 'home' },

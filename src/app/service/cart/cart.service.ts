@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Cart } from 'src/app/model/cart';
 import { UserService } from '../user/user.service';
+import { CartResponse } from 'src/app/model/CartResponse';
 
 @Injectable({
   providedIn: 'root',
@@ -26,5 +27,14 @@ export class CartService {
         Authorization: `Bearer ${localStorage.getItem('TOKEN')}`,
       },
     });
+  }
+
+  removeCartItem(cartItemId:number){
+    return this.httpClient.delete(`${this.baseURL}/api/cart/cartItem/${cartItemId}`,{
+      headers:{
+        Authorization: `Bearer ${localStorage.getItem('TOKEN')}`,
+      },
+      responseType:'text'
+    })
   }
 }
