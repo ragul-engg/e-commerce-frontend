@@ -1,24 +1,32 @@
-<nav class="navbar d-flex navbar-expand-lg bg-body-tertiary shadow-sm rounded ">
+<nav class="navbar d-flex navbar-expand-lg bg-body-tertiary shadow-sm rounded">
   <div class="container-fluid d-flex justify-content-between">
     <div>
       <button (click)="handleEcom()" class="btn navbar-brand fw-bold">
-        E-Commerce
+        <img
+          src="assets/e-commerce-logo.jpeg"
+          alt=""
+          width="30"
+          height="24"
+          class="d-inline-block align-text-top"
+        />
+        Commerce
       </button>
     </div>
     <div>
       <span class="d-flex">
-        <input
+        <!-- <input
           class="form-control me-2"
           type="search"
           placeholder="Search"
           aria-label="Search"
-        />
+        /> -->
         <a class="btn btn-primary mx-2" routerLink="/search">
+          Start Exploring
           <i class="bi bi-camera" (click)="toggle()"></i>
         </a>
-        <button class="btn btn-outline-success fw-bold" type="submit">
+        <!-- <button class="btn btn-outline-success fw-bold" type="submit">
           Search
-        </button>
+        </button> -->
       </span>
     </div>
     <div>
@@ -39,11 +47,18 @@
             >DashBoard</a
           >
         </div>
-        <div class="container-fluid d-flex justify-content-between " *ngIf="authService.isAuthenticated">
-          <button class="btn btn-primary me-2  " (click)="handleCartToggle()"><i class="bi bi-cart4"></i></button>
-          <button class="btn btn-primary me-2  " (click)="handleProfileToggle()"><i class="bi bi-person-circle"></i></button>
+        <div
+          class="container-fluid d-flex justify-content-between"
+          *ngIf="authService.isAuthenticated"
+        >
+          <button class="btn btn-primary me-2" (click)="handleCartToggle()">
+            <i class="bi bi-cart4"></i>
+          </button>
+          <button class="btn btn-primary me-2" (click)="handleProfileToggle()">
+            <i class="bi bi-person-circle"></i>
+          </button>
           <button
-            class="btn btn-outline-danger fw-bold  "
+            class="btn btn-outline-danger fw-bold"
             (click)="authService.logOut()"
           >
             Log-out

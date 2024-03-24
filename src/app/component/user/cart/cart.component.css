@@ -1,8 +1,9 @@
 .ItemContainer {
-    height: 500px;
-    overflow-y: auto;
+  height: 500px;
+  overflow-y: auto;
 }
 
+/*
 .category {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-decoration: underline;
@@ -14,4 +15,4 @@
 
 .franklin{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
+} */

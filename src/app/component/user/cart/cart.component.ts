@@ -12,8 +12,6 @@ import { CartItemDetails } from 'src/app/model/CartItemDetails';
 import { ProductsService } from 'src/app/service/products.service';
 import { Product } from 'src/app/model/Product';
 
-
-
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -26,12 +24,12 @@ export class CartComponent {
     private cartService: CartService,
     private userService: UserService,
     private notify: NotifyService,
-    private productService:ProductsService
+    private productService: ProductsService
   ) {}
   // cart data holder
   cartData?: Cart;
-  cartItems:CartItem[]=[];
-  cartItemDetails:CartItemDetails[]=[];
+  cartItems: CartItem[] = [];
+  cartItemDetails: CartItemDetails[] = [];
   customerId: number = 0;
   ngOnInit(): void {
     this.userService.getUserProfile().subscribe({
@@ -41,31 +39,32 @@ export class CartComponent {
           next: (res) => {
             console.log(res);
             this.cartData = res;
-            this.cartItems=res.cartItems;
+            this.cartItems = res.cartItems;
             //get product details and add to cartItemDetails
-            this.cartItems.map((data,_value)=>{
-              console.log("here");
+            this.cartItems.map((data, _value) => {
+              console.log('here');
               this.productService.getProduct(data.productId).subscribe({
-                next:(res)=>{
-                  console.log("came in");
+                next: (res) => {
+                  console.log('came in');
                   console.log(res);
                   let cartDetail: CartItemDetails = {
                     product: res,
-                    index: _value+1,
-                    cartItemId:data.id,
+                    index: _value + 1,
+                    cartItemId: data.id,
                     quantity: data.quantity,
-                    totalPrice: data.totalPrice
+                    totalPrice: data.totalPrice,
                   };
                   this.cartItemDetails?.push(cartDetail);
                 },
-                error:(err)=>{
+                error: (err) => {
                   console.log(err);
-                  this.notify.showError('Cannot Load Products in CartItems', 'E-Commerce');
-                  
-                }
-              })
-              
-            })
+                  this.notify.showError(
+                    'Cannot Load Products in CartItems',
+                    'E-Commerce'
+                  );
+                },
+              });
+            });
             this.cartItemDetails = this.cartItemDetails.sort((a, b) => {
               if (a.cartItemId && b.cartItemId) {
                 return a.cartItemId - b.cartItemId;
@@ -74,10 +73,8 @@ export class CartComponent {
             });
 
             console.log(Cart);
-            
           },
           error: (err) => {
-            
             this.notify.showError('Cannot get Cart', 'E-Commerce');
           },
         });
@@ -87,29 +84,26 @@ export class CartComponent {
       },
     });
   }
-  removeCartItem(cartItemId:number){
+  removeCartItem(cartItemId: number) {
     this.cartService.removeCartItem(cartItemId).subscribe({
-      next:(res)=>{
-        this.notify.showSuccess(res,"E-Commerce");
+      next: (res) => {
+        this.notify.showSuccess(res, 'E-Commerce');
         console.log(res);
-        this.cartItemDetails=this.cartItemDetails.filter((data)=>{data.cartItemId!=cartItemId});
-        this.ngOnInit()
+        this.cartItemDetails = this.cartItemDetails.filter((data) => {
+          data.cartItemId != cartItemId;
+        });
+        this.ngOnInit();
       },
-      error:(err)=>{
-        console.log("errer here");
+      error: (err) => {
+        console.log('errer here');
         console.log(err);
-        
-        
-        this.notify.showError("Error removing CartItem","E-Commerce");
-        
-      }
-    })
 
-
+        this.notify.showError('Error removing CartItem', 'E-Commerce');
+      },
+    });
   }
 
-
-  handleCheckout(){
-   this.router.navigate(['user/order'],); 
+  handleCheckout() {
+    this.router.navigate(['user/order']);
   }
 }

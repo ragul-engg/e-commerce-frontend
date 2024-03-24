@@ -12,12 +12,14 @@ import { Router } from '@angular/router';
 })
 export class AuthService implements OnInit {
   constructor(
-    
     private httpClient: HttpClient,
     private notify: NotifyService,
     private router: Router
   ) {
-    console.log("Auth constructor !")
+    console.log('Auth constructor !');
+    this.isLoggedIn().subscribe((res) => {
+      this.isAuthenticated = res.valid;
+    });
   }
 
   baseURL = `http://localhost:8080`;
@@ -25,11 +27,7 @@ export class AuthService implements OnInit {
   isAuthenticated?: boolean;
   isAdmin?: boolean;
 
-  ngOnInit(): void {
-    this.isLoggedIn().subscribe((res) => {
-      this.isAuthenticated = res.valid;
-    });
-  }
+  ngOnInit(): void {}
 
   loginUser(form: Login) {
     return this.httpClient
@@ -39,10 +37,11 @@ export class AuthService implements OnInit {
 
   registerUser(form: User) {
     console.log(form);
-    
-    return this.httpClient
-      .post(`${this.baseURL}/register`, form,{responseType:'text'});
-      //.pipe(catchError(this.handleAuthError));
+
+    return this.httpClient.post(`${this.baseURL}/register`, form, {
+      responseType: 'text',
+    });
+    //.pipe(catchError(this.handleAuthError));
   }
 
   handleAuthError(error: HttpErrorResponse) {

@@ -38,7 +38,7 @@ const routes: Routes = [
     path: 'products/category',
     component: CategoryProductsComponent,
     canActivate: [authGuard()],
-    children: [{ path: ':productId', component: ProductDescriptionComponent }]
+    children: [{ path: ':productId', component: ProductDescriptionComponent }],
   },
   {
     path: 'search',
@@ -70,7 +70,6 @@ const routes: Routes = [
       { path: 'cart', component: CartComponent },
       { path: 'profile', component: ProfileComponent },
       { path: 'order', component: OrderComponent },
-    children: [
       {
         path: 'dashboard',
         component: DashboardComponent,
