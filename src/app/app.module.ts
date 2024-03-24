@@ -19,6 +19,14 @@ import { AdminComponent } from './component/admin/admin.component';
 import { AddProductComponent } from './component/product/add-product/add-product.component';
 import { DeleteProductComponent } from './component/product/delete-product/delete-product.component';
 import { DashboardComponent } from './component/admin/dashboard/dashboard.component';
+import { CategoryProductsComponent } from './component/product/category-products/category-products.component';
+import { UserComponent } from './component/user/user.component';
+import { CartComponent } from './component/user/cart/cart.component';
+import { ProfileComponent } from './component/user/profile/profile.component';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
+import { DataViewModule } from 'primeng/dataview';
+import { DividerModule } from 'primeng/divider';
+import { OrderComponent } from './component/user/order/order.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +42,11 @@ import { DashboardComponent } from './component/admin/dashboard/dashboard.compon
     DeleteProductComponent,
     AddProductComponent,
     DashboardComponent,
+    CategoryProductsComponent,
+    UserComponent,
+    CartComponent,
+    ProfileComponent,
+    OrderComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,6 +59,9 @@ import { DashboardComponent } from './component/admin/dashboard/dashboard.compon
     BrowserAnimationsModule,
     WebcamModule,
     FormsModule,
+    ScrollPanelModule,
+    DataViewModule,
+    DividerModule
   ],
   providers: [],
   bootstrap: [AppComponent],

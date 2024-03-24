@@ -22,6 +22,8 @@ export class ProductsService {
   }
 
   getProduct(productId: number) {
+    console.log(productId);
+    
     return this.http.get<Product>(`${this.baseURL}/api/product/${productId}`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('TOKEN')}`,

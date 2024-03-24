@@ -27,12 +27,39 @@ export class RegisterComponent {
   });
 
   registerUser(form: FormGroup) {
-    this.authService.registerUser(form.value).subscribe((res) => {
-      this.router.navigateByUrl('/home/login');
-      this.notify.showSuccess(
-        'Registration successful, login to continue',
-        'E-Commerce'
-      );
-    });
+    console.log(form.value);
+    
+    this.authService.registerUser(form.value).subscribe(
+      {
+        next:(res) => {
+          this.router.navigateByUrl('/home/login');
+          this.notify.showSuccess(
+            'Registration successful, login to continue',
+            'E-Commerce'
+          );
+        },
+        error:(error)=>{
+          console.log("Inside registration error:")
+          console.log(error);
+          this.notify.showError("error in registration","Error");
+          
+        }
+        
+      }
+    );
+  
   }
 }
+
+// ((res) => {
+//   this.router.navigateByUrl('/home/login');
+//   this.notify.showSuccess(
+//     'Registration successful, login to continue',
+//     'E-Commerce'
+//   );
+// },
+// (error)=>{
+//   console.log(error);
+//   this.notify.showError("error in registration","Error");
+  
+// }

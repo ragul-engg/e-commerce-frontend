@@ -1,4 +1,4 @@
-<nav class="navbar d-flex navbar-expand-lg bg-body-tertiary">
+<nav class="navbar d-flex navbar-expand-lg bg-body-tertiary shadow-sm rounded ">
   <div class="container-fluid d-flex justify-content-between">
     <div>
       <button (click)="handleEcom()" class="btn navbar-brand fw-bold">
@@ -39,9 +39,11 @@
             >DashBoard</a
           >
         </div>
-        <div *ngIf="authService.isAuthenticated">
+        <div class="container-fluid d-flex justify-content-between " *ngIf="authService.isAuthenticated">
+          <button class="btn btn-primary me-2  " (click)="handleCartToggle()"><i class="bi bi-cart4"></i></button>
+          <button class="btn btn-primary me-2  " (click)="handleProfileToggle()"><i class="bi bi-person-circle"></i></button>
           <button
-            class="btn btn-outline-danger fw-bold"
+            class="btn btn-outline-danger fw-bold  "
             (click)="authService.logOut()"
           >
             Log-out

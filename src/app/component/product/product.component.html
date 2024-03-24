@@ -1,13 +1,9 @@
 <app-nav-bar></app-nav-bar>
 
-<div class="container-fluid   ">
+<div class="container-fluid">
   <!-- carousal -->
-  <div class="row m-2 ">
-    <div
-      id="myCarousel"
-      class="carousel slide mb-6  "
-      data-bs-ride="carousel"
-    >
+  <div class="row m-2">
+    <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
       <div class="carousel-indicators">
         <button
           type="button"
@@ -34,7 +30,7 @@
         <div class="carousel-item active c-item">
           <img
             src="https://wallpapercave.com/wp/wp311455.jpg"
-            class="d-block w-100 c-img "
+            class="d-block w-100 c-img"
             alt="..."
           />
           <div class="container">
@@ -53,7 +49,7 @@
         <div class="carousel-item c-item">
           <img
             src="https://wallpapercave.com/wp/wp2002375.jpg"
-            class="d-block w-100 c-img "
+            class="d-block w-100 c-img"
             alt="..."
           />
           <div class="container">
@@ -70,7 +66,7 @@
         <div class="carousel-item c-item">
           <img
             src="https://wallpapercave.com/wp/wp2418272.jpg"
-            class="d-block w-100 c-img "
+            class="d-block w-100 c-img"
             alt="..."
           />
           <div class="container">
@@ -109,37 +105,135 @@
   </div>
   <!-- cards for categories -->
   <div class="row m-2">
-    <div class="col-3"><div class="card border border-black h-100 " >
-      <img src="assets/site_images//product_page/card_sedan.jpg" class="card-img-top" alt="...">
-      <div class="card-body d-flex flex-column flex-fill justify-content-center  ">
-        <h5 class="card-title fw-bold ">SEDAN</h5>
-        <p class="card-text">For a stylish and practical sedan option, consider the Ford Fusion with its sleek design and fuel efficiency.</p>
-        <a href="#" class="btn btn-primary fw-bold mt-auto w-50 mx-auto ">View More</a>
+    <div class="col-3">
+      <div class="card border border-black h-100">
+        <img
+          src="assets/site_images//product_page/card_sedan.jpg"
+          class="card-img-top"
+          alt="..."
+        />
+        <div
+          class="card-body d-flex flex-column flex-fill justify-content-center"
+        >
+          <h5 class="card-title fw-bold">SEDAN</h5>
+          <p class="card-text">
+            For a stylish and practical sedan option, consider the Ford Fusion
+            with its sleek design and fuel efficiency.
+          </p>
+          <a (click)="searchCategory('SEDAN')" class="btn btn-primary fw-bold mt-auto w-50 mx-auto"
+            >View More</a
+          >
+        </div>
       </div>
-    </div></div>
-    <div class="col-3"><div class="card  border border-black h-100" >
-      <img src="assets/site_images/product_page/card_hatchback.jpg" class="card-img-top" alt="...">
-      <div class="card-body d-flex flex-column flex-fill justify-content-center ">
-        <h5 class="card-title fw-bold">HATCH BACK</h5>
-        <p class="card-text">The Ford Focus hatchback offers a compact and versatile option for urban driving and weekend getaways.</p>
-        <a href="#" class="btn btn-primary fw-bold mt-auto w-50 mx-auto ">View More</a>
+    </div>
+    <div class="col-3">
+      <div class="card border border-black h-100">
+        <img
+          src="assets/site_images/product_page/card_hatchback.jpg"
+          class="card-img-top"
+          alt="..."
+        />
+        <div
+          class="card-body d-flex flex-column flex-fill justify-content-center"
+        >
+          <h5 class="card-title fw-bold">HATCH BACK</h5>
+          <p class="card-text">
+            The Ford Focus hatchback offers a compact and versatile option for
+            urban driving and weekend getaways.
+          </p>
+          <a (click)="searchCategory('HATCHBACK')" class="btn btn-primary fw-bold mt-auto w-50 mx-auto"
+            >View More</a
+          >
+        </div>
       </div>
-    </div></div>
-    <div class="col-3"><div class="card  border border-black h-100 ">
-      <img src="assets/site_images/product_page/card_truck.jpg" class="card-img-top" alt="...">
-      <div class="card-body d-flex flex-column flex-fill justify-content-center ">
-        <h5 class="card-title fw-bold">TRUCK</h5>
-        <p class="card-text">The rugged and powerful Ford F-150 truck is perfect for tackling tough jobs with ease.</p>
-        <a href="#" class="btn btn-primary fw-bold mt-auto w-50 mx-auto  ">View More</a>
+    </div>
+    <div class="col-3">
+      <div class="card border border-black h-100">
+        <img
+          src="assets/site_images/product_page/card_truck.jpg"
+          class="card-img-top"
+          alt="..."
+        />
+        <div
+          class="card-body d-flex flex-column flex-fill justify-content-center"
+        >
+          <h5 class="card-title fw-bold">TRUCK</h5>
+          <p class="card-text">
+            The rugged and powerful Ford F-150 truck is perfect for tackling
+            tough jobs with ease.
+          </p>
+          <a (click)="searchCategory('TRUCK')" class="btn btn-primary fw-bold mt-auto w-50 mx-auto"
+            >View More</a
+          >
+        </div>
       </div>
-    </div></div>
-    <div class="col-3"><div class="card  border border-black h-100 " >
-      <img src="assets/site_images/product_page/card_suv.jpg" class="card-img-top" alt="...">
-      <div class="card-body d-flex flex-column flex-fill justify-content-center ">
-        <h5 class="card-title fw-bold">SUV</h5>
-        <p class="card-text">Embark on off-road adventures with the legendary Ford Bronco SUV, renowned for its rugged capability and iconic design that exudes adventure and freedom.</p>
-        <a href="#" class="btn btn-primary fw-bold mt-auto w-50 mx-auto  ">View More</a>
+    </div>
+    <div class="col-3">
+      <div class="card border border-black h-100">
+        <img
+          src="assets/site_images/product_page/card_suv.jpg"
+          class="card-img-top"
+          alt="..."
+        />
+        <div
+          class="card-body d-flex flex-column flex-fill justify-content-center"
+        >
+          <h5 class="card-title fw-bold">SUV</h5>
+          <p class="card-text">
+            Embark on off-road adventures with the legendary Ford Bronco SUV,
+            renowned for its rugged capability and iconic design that exudes
+            adventure and freedom.
+          </p>
+          <a (click)="searchCategory('SUV')" class="btn btn-primary fw-bold mt-auto w-50 mx-auto"
+            >View More</a
+          >
+        </div>
       </div>
-    </div></div>
+    </div>
   </div>
+  <!-- products cards -->
+  <!-- <div class="container">
+    <div class="row">
+      <div *ngFor="let product of products" class="col-md-3">
+        <div class="card border border-black my-3">
+          <img
+            [src]="product.imageUrl"
+            class="card-img-top"
+            alt="image-thumbnail"
+          />
+          <div
+            class="card-body d-flex flex-column flex-fill justify-content-center"
+          >
+            <div class="row my-2">
+              <div class="col">
+                <h5 class="card-title fw-bold">Name: {{ product.name }}</h5>
+              </div>
+              <div class="col">
+                <h5 class="card-text">
+                  Price:
+                  {{ product.price }}
+                </h5>
+              </div>
+            </div>
+            <div class="row my-2">
+              <div class="col">
+                <button
+                  class="btn btn-secondary"
+                  (click)="moreInfo(product.id)"
+                >
+                  More Info
+                </button>
+              </div>
+              <div class="col">
+                <button class="btn btn-primary">Add to cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
 </div>
+
+<!-- products cards -->
+<router-outlet></router-outlet>

@@ -11,6 +11,11 @@ import { AdminComponent } from './component/admin/admin.component';
 import { AddProductComponent } from './component/product/add-product/add-product.component';
 import { DeleteProductComponent } from './component/product/delete-product/delete-product.component';
 import { DashboardComponent } from './component/admin/dashboard/dashboard.component';
+import { CategoryProductsComponent } from './component/product/category-products/category-products.component';
+import { UserComponent } from './component/user/user.component';
+import { CartComponent } from './component/user/cart/cart.component';
+import { ProfileComponent } from './component/user/profile/profile.component';
+import { OrderComponent } from './component/user/order/order.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -26,6 +31,14 @@ const routes: Routes = [
     path: 'products',
     component: ProductComponent,
     canActivate: [authGuard()],
+    // canActivateChild: [authGuard()],
+    // children: [{ path: 'category', component: CategoryProductsComponent }],
+  },
+  {
+    path: 'products/category',
+    component: CategoryProductsComponent,
+    canActivate: [authGuard()],
+    children: [{ path: ':productId', component: ProductDescriptionComponent }]
   },
   {
     path: 'search',
@@ -33,15 +46,30 @@ const routes: Routes = [
     canActivate: [authGuard()],
   },
   {
-    path: 'products/:productId',
-    component: ProductDescriptionComponent,
-    canActivate: [authGuard()],
-  },
-  {
     path: 'admin',
     component: AdminComponent,
     canActivate: [authGuard()],
     canActivateChild: [authGuard()],
+    children: [
+      {
+        path: 'dashboard',
+        component: DashboardComponent,
+        children: [
+          { path: 'product/new', component: AddProductComponent },
+          { path: 'product/delete', component: DeleteProductComponent },
+        ],
+      },
+    ],
+  },
+  {
+    path: 'user',
+    component: UserComponent,
+    canActivate: [authGuard()],
+    canActivateChild: [authGuard()],
+    children: [
+      { path: 'cart', component: CartComponent },
+      { path: 'profile', component: ProfileComponent },
+      { path: 'order', component: OrderComponent },
     children: [
       {
         path: 'dashboard',
