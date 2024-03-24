@@ -47,7 +47,6 @@ import { OrderComponent } from './component/user/order/order.component';
     CartComponent,
     ProfileComponent,
     OrderComponent,
-    
   ],
   imports: [
     BrowserModule,

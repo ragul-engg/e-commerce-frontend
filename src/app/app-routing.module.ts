@@ -17,7 +17,6 @@ import { CartComponent } from './component/user/cart/cart.component';
 import { ProfileComponent } from './component/user/profile/profile.component';
 import { OrderComponent } from './component/user/order/order.component';
 
-
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
@@ -71,6 +70,15 @@ const routes: Routes = [
       { path: 'cart', component: CartComponent },
       { path: 'profile', component: ProfileComponent },
       { path: 'order', component: OrderComponent },
+    children: [
+      {
+        path: 'dashboard',
+        component: DashboardComponent,
+        children: [
+          { path: 'product/new', component: AddProductComponent },
+          { path: 'product/delete', component: DeleteProductComponent },
+        ],
+      },
     ],
   },
   { path: '**', redirectTo: 'home' },
